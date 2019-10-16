@@ -65,3 +65,5 @@ MapState[10,0]=9;
 ```
 RoarCTF{wm-805CEC3545}
 ```
+菜b对话
+![image](7.png)
