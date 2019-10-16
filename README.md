@@ -52,6 +52,10 @@ RoarCTF2019-TankGame WriteUp
 -
 实现用的是Java
 Sha1Demo_2.java文件中给出了实现。
+感谢大佬
+<br>
+大佬GitHubname：crwen
+<br>
 最后算出来的结果是
 ```
 MapState[2,3]=8;
