@@ -52,6 +52,14 @@ RoarCTF2019-TankGame WriteUp
 -
 实现用的是Java
 Sha1Demo_2.java文件中给出了实现。
+最后算出来的结果是
+```
+MapState[2,3]=8;
+MapState[5,9]=8;
+MapState[13,7]=8;
+MapState[10,0]=9;
+还得自杀，有点毒....
+```
 值的注意的是MD5取的是前10位大写
 所以flag是
 ```
