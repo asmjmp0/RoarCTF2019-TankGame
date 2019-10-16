@@ -8,12 +8,13 @@ RoarCTF2019-TankGame WriteUp
 -
 打开文件夹，发现是unity游戏打开游戏是坦克大战，结合上述条件，dnspy是跑不掉了。<br>
 用dnspy打开Tank_Data\\Managed目录下的Assembly-CSharp.dll文件(dll本身也是可执行文件的一种)，就可以看到这个游戏全部的逻辑代码了。
-@图片0
+<br>
+![image](1.png)
 
 2.逆向分析
 -
 经过查看每个类发现在MapManger下有个WinGame函数应该就是验证函数。
-@图片1
+![image](2.png)
 ```
 简要分析：
 当没赢游戏，且nDestroyNum的数为4或者5的时候进行校验，如果满足SHA1(clearlove9+遍历(MapState))==
@@ -21,7 +22,8 @@ RoarCTF2019-TankGame WriteUp
 即为通过，然后MD5(clearlove9+遍历(MapState))则是flag的一部分。
 ```
 现在关键是找到是哪个地方修改了nDestroyNum，打开dnspy的搜索功能可以找到在Bullect类下面有个OnTriggerEnter2D函数
-@图片3
+<br>
+![image](3.png)
 ```
 简要分析：
 当打的是墙的时候就把MapState数组相应部分修改成8，如果是心脏就改成9
@@ -29,8 +31,8 @@ RoarCTF2019-TankGame WriteUp
 而数组以0开始
 ```
 打开MapManger下的init函数 C#的看数组方式有点反人类这里我调成VB
-@图片4
-@图片5
+![image](4.png)
+![image](5.png)
 与游戏界面对照不难发现，8是空白，1是普通可摧毁的墙，0是心脏。
 也就是说摧毁相应的东西摧毁对了就给flag。
 
